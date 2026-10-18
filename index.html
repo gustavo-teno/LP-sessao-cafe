@@ -204,18 +204,11 @@
   .result .btn { align-self: flex-start; background: #f0c9a0; border-color: #f0c9a0; color: #2a1d15; margin-top: 6px; }
 
   /* Seção escura com transição suave e luz no cursor */
-  .night { position: relative; overflow: hidden; background: var(--night); color: var(--night-ink); padding: 250px 0 260px; }
+  .night { position: relative; overflow: hidden; background: var(--night); color: var(--night-ink); padding: 240px 0 220px; }
+  /* Transições longas e suaves entre o fundo claro e o escuro (curva suavizada, interpolação perceptual) */
   .night::before, .night::after { content: ""; position: absolute; left: 0; right: 0; pointer-events: none; }
-  .night::before { top: 0; height: 300px; background: linear-gradient(to bottom, var(--bg) 0%, rgba(14,14,16,.0) 0%, var(--night) 100%); background: linear-gradient(to bottom, var(--bg), var(--night)); }
-  .night::after { bottom: 0; height: 240px; background: linear-gradient(to top, var(--bg), var(--night)); }
-  .glow {
-    position: absolute; left: 0; top: 0; width: 640px; height: 640px; margin: -320px 0 0 -320px;
-    border-radius: 50%; pointer-events: none; opacity: 0;
-    background: radial-gradient(circle, rgba(255,255,255,.30) 0%, rgba(255,255,255,.11) 35%, rgba(255,255,255,0) 68%);
-    transition: opacity .35s ease; will-change: transform;
-  }
-  .night.lit .glow { opacity: 1; }
-  .night.lit.over-content .glow { opacity: .12; }
+  .night::before { top: 0; height: 200px; background: linear-gradient(to bottom, #fbfaf8 0.0%, #faf9f7 6.2%, #f7f6f4 12.5%, #eeedeb 18.8%, #dfdedc 25.0%, #cac9c8 31.2%, #b1b1b0 37.5%, #969595 43.8%, #797979 50.0%, #5e5d5e 56.2%, #454546 62.5%, #313132 68.8%, #212123 75.0%, #171719 81.2%, #111113 87.5%, #0e0e10 93.8%, #0e0e10 100.0%); }
+  .night::after { bottom: 0; height: 180px; background: linear-gradient(to top, #fbfaf8 0.0%, #faf9f7 6.2%, #f7f6f4 12.5%, #eeedeb 18.8%, #dfdedc 25.0%, #cac9c8 31.2%, #b1b1b0 37.5%, #969595 43.8%, #797979 50.0%, #5e5d5e 56.2%, #454546 62.5%, #313132 68.8%, #212123 75.0%, #171719 81.2%, #111113 87.5%, #0e0e10 93.8%, #0e0e10 100.0%); }
   .night .wrap { position: relative; z-index: 1; }
   .night .eyebrow { color: #e8bb92; }
   .night .head p { color: var(--night-muted); }
@@ -426,7 +419,6 @@
     </div>
   </section>
   <section class="night" id="silencio">
-    <div class="glow" id="glow" aria-hidden="true"></div>
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">Andar de cima</p>
@@ -625,20 +617,6 @@
       timer.textContent = pad(Math.floor(secs / 3600)) + ':' + pad(Math.floor(secs / 60) % 60) + ':' + pad(secs % 60);
     }, 1000);
   }
-
-  // Luz que segue o cursor (só na seção escura); fica fraca sobre texto e blocos
-  var night = document.getElementById('silencio');
-  var glow = document.getElementById('glow');
-  var contentSel = 'h2, h3, p, li, .card, a, button';
-  night.addEventListener('pointermove', function (e) {
-    var r = night.getBoundingClientRect();
-    glow.style.transform = 'translate(' + (e.clientX - r.left) + 'px,' + (e.clientY - r.top) + 'px)';
-    night.classList.add('lit');
-    night.classList.toggle('over-content', !!e.target.closest(contentSel));
-  });
-  night.addEventListener('pointerleave', function () {
-    night.classList.remove('lit', 'over-content');
-  });
 
   // Encontre sua mesa
   var spots = {
