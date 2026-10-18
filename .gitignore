@@ -1,0 +1,18 @@
+# Segredos e configurações locais
+.env
+.env.*
+*.pem
+*.key
+secrets.*
+.claude/
+.vscode/
+
+# Lixo de sistema e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# Dependências e builds
+node_modules/
+dist/
