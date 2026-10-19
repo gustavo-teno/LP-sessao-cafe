@@ -82,7 +82,19 @@
   .actions { display: flex; gap: 12px; flex-wrap: wrap; }
   .side { animation: rise .9s .35s var(--ease) both; }
   .side-float { position: relative; padding-bottom: 130px; }
-  .table-card { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 26px; box-shadow: 0 24px 60px rgba(70,40,15,.10); }
+
+  /* Quadro de giz */
+  .board { position: relative; padding: 24px 26px 22px; border: 12px solid #8b5e3c; border-radius: 10px; color: #f3efe6;
+    background: radial-gradient(circle at 20% 25%, rgba(255,255,255,.06), transparent 45%),
+                radial-gradient(circle at 80% 75%, rgba(255,255,255,.05), transparent 50%), #2b302b;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.25), inset 0 0 40px rgba(0,0,0,.5), 0 24px 50px rgba(40,20,5,.25);
+    font-family: "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Neue", cursive; }
+  .board .title { font-size: 1.8rem; line-height: 1.2; text-align: center; margin-bottom: 10px; text-decoration: underline wavy rgba(243,239,230,.35); text-underline-offset: 8px; }
+  .board ul { list-style: none; margin: 0; padding: 0; }
+  .board li { display: flex; align-items: baseline; gap: 8px; padding: 6px 0; font-size: 1.02rem; }
+  .board li i { flex: 1; border-bottom: 2px dotted rgba(243,239,230,.3); translate: 0 -5px; }
+  .board li span + i + span { color: #f2d49b; }
+  .board .note { margin-top: 12px; text-align: center; font-size: .95rem; color: rgba(243,239,230,.7); }
 
   /* Post-it */
   .postit { position: absolute; left: -34px; bottom: 0; width: 210px; padding: 26px 20px 18px; background: #ffe48a; color: #3b2a12; border-radius: 3px 3px 22px 3px; box-shadow: 0 14px 30px rgba(70,40,15,.20), inset 0 -10px 18px rgba(190,140,20,.12); transform: rotate(-5deg); transform-origin: 50% 0; font-family: "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Neue", cursive; line-height: 1.2; transition: transform .4s var(--ease); animation: stick 1s 1.1s var(--ease) backwards; z-index: 2; }
@@ -93,29 +105,6 @@
   .postit > span:last-child { display: block; font-size: .95rem; color: #5a4116; }
   @keyframes stick { from { opacity: 0; transform: translateY(-30px) rotate(-14deg) scale(1.1); } }
   @media (max-width: 860px) { .postit { left: 12px; } .side { max-width: 460px; } }
-  .table-card .head-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .live { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
-  .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3aa66b; }
-  .timer { font: 800 2.1rem/1 ui-monospace, Consolas, monospace; letter-spacing: -0.04em; margin: 8px 0 14px; font-variant-numeric: tabular-nums; }
-  .table-card .row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); font-weight: 600; font-size: .96rem; }
-  .table-card .row > span:first-child { display: inline-flex; align-items: center; gap: 10px; }
-  .table-card .row .i { color: var(--accent); font-size: 1.15em; }
-  .table-card .row em { font-style: normal; color: var(--muted); font-weight: 600; font-size: .9rem; }
-  .battery { width: 64px; height: 8px; border-radius: 99px; background: var(--soft); overflow: hidden; }
-  .battery i { display: block; height: 100%; width: 100%; background: #3aa66b; border-radius: 99px; transform-origin: left; transform: scaleX(0); animation: charge 3.6s ease-in-out infinite; }
-  @keyframes charge {
-    0%   { transform: scaleX(0); opacity: 1; }
-    65%  { transform: scaleX(1); opacity: 1; }
-    85%  { transform: scaleX(1); opacity: 1; }
-    100% { transform: scaleX(1); opacity: 0; }
-  }
-  .bars { display: inline-flex; gap: 3px; align-items: flex-end; height: 16px; }
-  .bars i { width: 4px; background: var(--accent); border-radius: 2px; opacity: .22; animation: bar 2.4s ease-in-out infinite; }
-  .bars i:nth-child(1) { height: 5px; }
-  .bars i:nth-child(2) { height: 9px; animation-delay: .2s; }
-  .bars i:nth-child(3) { height: 13px; animation-delay: .4s; }
-  .bars i:nth-child(4) { height: 16px; animation-delay: .6s; }
-  @keyframes bar { 0%, 100% { opacity: .22; } 30%, 60% { opacity: 1; } }
 
   /* Faixa */
   .marquee { overflow: hidden; background: var(--text); color: var(--bg); padding: 16px 0; }
@@ -361,13 +350,15 @@
       </div>
 
       <div class="side"><div class="side-float">
-        <div class="table-card" aria-hidden="true">
-          <div class="head-row"><span class="live">Sessão em andamento</span></div>
-          <div class="timer" id="timer">01:42:08</div>
-          <div class="row"><span><svg class="i"><use href="#i-plug"/></svg>Tomada</span><span class="battery"><i></i></span></div>
-          <div class="row"><span><svg class="i"><use href="#i-wifi"/></svg>Wi-Fi</span><span class="bars"><i></i><i></i><i></i><i></i></span></div>
-          <div class="row"><span><svg class="i"><use href="#i-bulb"/></svg>Iluminação</span><em>natural e artificial</em></div>
-          <div class="row"><span><svg class="i"><use href="#i-coffee"/></svg>Refil</span><em>preço reduzido</em></div>
+        <div class="board">
+          <p class="title">Hoje no Sessão</p>
+          <ul>
+            <li><span>Tomadas</span><i></i><span>todas as mesas</span></li>
+            <li><span>Wi-Fi</span><i></i><span>senha no balcão</span></li>
+            <li><span>Andar de cima</span><i></i><span>silêncio</span></li>
+            <li><span>Refil</span><i></i><span>mais barato</span></li>
+          </ul>
+          <p class="note">Pode ficar à vontade.</p>
         </div>
         <div class="postit" role="note" aria-label="Desconto estudantil: 10% mostrando a carteirinha">
           <span class="tape" aria-hidden="true"></span>
@@ -574,8 +565,6 @@
 </dialog>
 
 <script>
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   // Cabeçalho e barra fixa
   var header = document.getElementById('top');
   var sticky = document.getElementById('sticky');
@@ -622,17 +611,6 @@
     for (var k = 0; k < 8; k++) html += unit;
     g.innerHTML = html;
   });
-
-  // Cronômetro
-  var timer = document.getElementById('timer');
-  var secs = 1 * 3600 + 42 * 60 + 8;
-  function pad(n) { return String(n).padStart(2, '0'); }
-  if (!reduce) {
-    setInterval(function () {
-      secs++;
-      timer.textContent = pad(Math.floor(secs / 3600)) + ':' + pad(Math.floor(secs / 60) % 60) + ':' + pad(secs % 60);
-    }, 1000);
-  }
 
   // Encontre sua mesa
   var spots = {
