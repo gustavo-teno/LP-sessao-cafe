@@ -202,12 +202,14 @@
   .menu-wrap { display: grid; gap: 20px; grid-template-columns: 5fr 7fr; align-items: stretch; }
   .menu-photo { position: relative; margin: 0; min-height: 360px; border-radius: 22px; overflow: hidden; background: var(--soft); }
   .menu-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-  .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 40px; align-content: center; }
-  .menu-group h3 { font-size: 1.15rem; padding-bottom: 10px; border-bottom: 2px solid var(--text); }
-  .menu-group ul { list-style: none; margin: 0; padding: 0; }
-  .menu-group li { padding: 10px 0; border-bottom: 1px dashed #d9cbbb; }
+  .menu { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; }
+  .item { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; }
+  .alt .item { background: var(--bg); }
+  .item .i { font-size: 1.6rem; color: var(--accent); }
+  .item h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .item p { color: var(--muted); font-size: .94rem; }
   @media (max-width: 860px) { .menu-wrap { grid-template-columns: 1fr; } .menu-photo { min-height: 0; aspect-ratio: 16 / 10; } }
-  @media (max-width: 560px) { .menu-list { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .menu { grid-template-columns: 1fr; } }
 
   /* Perguntas */
   .faq { max-width: 760px; display: grid; gap: 10px; }
@@ -310,6 +312,8 @@
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.200-7-11.500a7 7 0 0 1 14 0C19 14.800 12 21 12 21Z"/><circle cx="12" cy="9.500" r="2.500"/></symbol>
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 2.800a9.200 9.200 0 0 0-7.900 13.800L2.900 21.100l4.600-1.200A9.200 9.200 0 1 0 12 2.800Z"/><path transform="translate(12 12) scale(1.5) translate(-12.4 -11)" d="M9 7.700c-.4.700-.4 1.900.7 3.500 1.200 1.800 2.900 3 4.300 3.200.8.100 1.500-.4 1.700-1.100l-1.900-1-.9.900c-1-.4-2-1.400-2.500-2.400l.8-.9-.9-2c-.4-.2-.9 0-1.300-.2Z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.500"/><circle cx="12" cy="12" r="4.200"/><circle cx="17.200" cy="6.800" r="1.200" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-sandwich" viewBox="0 0 24 24"><path d="M3 10a9 5 0 0 1 18 0H3Z"/><path d="M3 14h18"/><path d="M4 18a8 3 0 0 0 16 0H4Z"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M6 6h12l-1.500 14h-9L6 6Z"/><path d="M5 6h14M12 2l1.500 4"/></symbol>
     <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13 7 4 4"/></symbol>
     <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.500"/><circle cx="17" cy="17" r="2.500"/></symbol>
   </defs>
@@ -442,11 +446,11 @@
       </div>
       <div class="menu-wrap">
         <figure class="menu-photo reveal"><img src="https://images.unsplash.com/photo-1683442032849-9788d3828053?auto=format&fit=crop&w=1000&q=75" alt="Cappuccino com arte na espuma e um croissant sobre uma mesa de madeira" loading="lazy"></figure>
-        <div class="menu-list">
-          <div class="menu-group reveal"><h3>Cafés</h3><ul><li>Espresso</li><li>Coado do dia</li><li>Cappuccino</li><li>Café gelado com leite</li></ul></div>
-          <div class="menu-group reveal"><h3>Lanches</h3><ul><li>Pão de queijo</li><li>Tapioca de queijo coalho</li><li>Cuscuz com ovo</li><li>Sanduíche natural</li></ul></div>
-          <div class="menu-group reveal"><h3>Doces</h3><ul><li>Bolo de rolo</li><li>Brownie</li><li>Cookie de chocolate</li><li>Bolo do dia</li></ul></div>
-          <div class="menu-group reveal"><h3>Outras bebidas</h3><ul><li>Suco de cajá</li><li>Água de coco</li><li>Chá gelado</li><li>Limonada</li></ul></div>
+        <div class="menu">
+          <div class="item reveal"><svg class="i"><use href="#i-coffee"/></svg><div><h3>Cafés</h3><p>Espresso, coado, cappuccino e versões geladas.</p></div></div>
+          <div class="item reveal"><svg class="i"><use href="#i-sandwich"/></svg><div><h3>Lanches rápidos</h3><p>Sanduíches, tapiocas e salgados para não parar.</p></div></div>
+          <div class="item reveal"><svg class="i"><use href="#i-cookie"/></svg><div><h3>Doces e cookies</h3><p>Bolos, brownies e tortas para acompanhar o café.</p></div></div>
+          <div class="item reveal"><svg class="i"><use href="#i-cup"/></svg><div><h3>Outras bebidas</h3><p>Sucos, chás e refrescos.</p></div></div>
         </div>
       </div>
     </div>
