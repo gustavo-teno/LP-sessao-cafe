@@ -220,6 +220,8 @@
   summary .i { transition: transform .3s var(--ease); color: var(--accent); }
   details[open] summary .i { transform: rotate(45deg); }
   details p { color: var(--muted); padding-bottom: 18px; animation: pop .4s var(--ease); }
+  details p:has(+ .nota) { padding-bottom: 6px; }
+  details .nota { display: block; color: var(--muted); font-size: .8rem; line-height: 1.4; padding-bottom: 18px; }
 
   .cta-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   .cta-card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
@@ -479,10 +481,10 @@
         <h2>Perguntas frequentes</h2>
       </div>
       <div class="faq reveal">
-        <details><summary>Posso ficar o dia todo?<svg class="i"><use href="#i-plus"/></svg></summary><p>Pode. Não há limite de tempo, só pedimos que você consuma de vez em quando.</p></details>
-        <details><summary>Como funciona o refil?<svg class="i"><use href="#i-plus"/></svg></summary><p>Depois do primeiro café, peça o refil no balcão a qualquer momento da sessão, por um preço menor. Os valores serão divulgados na abertura.</p></details>
-        <details><summary>Como funciona o desconto estudantil?<svg class="i"><use href="#i-plus"/></svg></summary><p>Mostre a carteirinha estudantil no caixa e ganhe 10% de desconto no pedido. Não acumula com outras promoções.</p></details>
-        <details><summary>Posso fazer chamadas de vídeo?<svg class="i"><use href="#i-plus"/></svg></summary><p>Pode, no térreo. No andar de cima, chamadas não são permitidas.</p></details>
+        <details><summary>Posso ficar várias horas?<svg class="i"><use href="#i-plus"/></svg></summary><p>Sim! Não se preocupe, não há limite de tempo, apenas pedimos que você consuma de vez em quando. ;)</p></details>
+        <details><summary>Como funciona o refil?<svg class="i"><use href="#i-plus"/></svg></summary><p>Depois do primeiro café, peça o refil no balcão a qualquer momento, por um preço menor. Os valores serão divulgados na abertura.</p></details>
+        <details><summary>Como funciona o desconto estudantil?<svg class="i"><use href="#i-plus"/></svg></summary><p>Basta mostrar a carteirinha estudantil no caixa e você ganha 10% de desconto no pedido!</p><small class="nota">Obs: Não acumula com outras promoções.</small></details>
+        <details><summary>Posso fazer ligações?<svg class="i"><use href="#i-plus"/></svg></summary><p>Sim! No Térreo, pois o andar de cima é silencioso.</p></details>
         <details><summary>Preciso reservar mesa?<svg class="i"><use href="#i-plus"/></svg></summary><p>Não é obrigatório, mas reservar garante o seu lugar, principalmente no andar silencioso em época de provas.</p></details>
       </div>
     </div>
