@@ -72,6 +72,9 @@
   .hero h1 em { font-style: italic; color: var(--accent); }
   .hero .lead { margin: 20px 0 28px; color: var(--muted); font-size: 1.08rem; max-width: 540px; }
   .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero .actions { align-items: center; gap: 12px 18px; }
+  .actions-note { margin: 0; max-width: 230px; font-size: .9rem; line-height: 1.4; color: var(--muted); }
+  @media (max-width: 560px) { .hero .actions .btn { flex: 1 1 100%; } .actions-note { max-width: none; } }
   .side { animation: rise .9s .35s var(--ease) both; }
   .side-float { position: relative; padding-bottom: 150px; }
 
