@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Bash(cat .env*)",
+      "Bash(type .env*)",
+      "Bash(Get-Content .env*)",
+      "Bash(git add .env*)",
+      "Bash(git add -f *)",
+      "Bash(git add --force *)",
+      "PowerShell(Get-Content .env*)",
+      "PowerShell(cat .env*)",
+      "PowerShell(git add .env*)",
+      "PowerShell(git add -f *)",
+      "PowerShell(git add --force *)"
+    ]
+  }
+}
