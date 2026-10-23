@@ -6,6 +6,43 @@
 <meta name="color-scheme" content="light">
 <title>Sessão.Café — a cafeteria para quem vem estudar e trabalhar · João Pessoa</title>
 <meta name="description" content="Cafeteria em João Pessoa para universitários e profissionais: tomada em toda mesa, andar silencioso, Wi-Fi, boa iluminação, refil com preço reduzido e desconto com carteirinha estudantil.">
+<meta name="theme-color" content="#9a5b32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://sessao-cafe.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Sessão.Café">
+<meta property="og:title" content="Sessão.Café — a cafeteria para quem vem estudar e trabalhar · João Pessoa">
+<meta property="og:description" content="Cafeteria em João Pessoa para universitários e profissionais: tomada em toda mesa, andar silencioso, Wi-Fi, boa iluminação, refil com preço reduzido e desconto com carteirinha estudantil.">
+<meta property="og:url" content="https://sessao-cafe.vercel.app/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1770816307909-de85ea3b54a6?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=75">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Horários abaixo: devem bater com o objeto "horarios" no script do fim do arquivo e com a lista do rodapé. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Sessão.Café",
+  "url": "https://sessao-cafe.vercel.app/",
+  "description": "Cafeteria em João Pessoa para universitários e profissionais: tomada em toda mesa, andar silencioso, Wi-Fi, boa iluminação, refil com preço reduzido e desconto com carteirinha estudantil.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua da Sessão, 100",
+    "addressLocality": "João Pessoa",
+    "addressRegion": "PB",
+    "addressCountry": "BR"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "22:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "13:00", "closes": "19:00" }
+  ],
+  "priceRange": "$",
+  "servesCuisine": "Café"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&display=swap">
@@ -37,6 +74,8 @@
     <symbol id="i-sandwich" viewBox="0 0 24 24"><path d="M3 10a9 5 0 0 1 18 0H3Z"/><path d="M3 14h18"/><path d="M4 18a8 3 0 0 0 16 0H4Z"/></symbol>
     <symbol id="i-cup" viewBox="0 0 24 24"><path d="M6 6h12l-1.500 14h-9L6 6Z"/><path d="M5 6h14M12 2l1.500 4"/></symbol>
     <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13 7 4 4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.500 7 8.500 6.500L20.500 7"/></symbol>
     <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.500"/><circle cx="17" cy="17" r="2.500"/></symbol>
   </defs>
 </svg>
@@ -213,7 +252,7 @@
     <div class="wrap">
       <div class="head reveal">
         <h2>Escolha como quer começar.</h2>
-        <p>Venha conhecer. Os horários de funcionamento serão divulgados em breve.</p>
+        <p>Venha conhecer. Aberto todos os dias. Veja os horários no rodapé.</p>
       </div>
       <div class="cta-grid">
         <div class="cta-card reveal">
@@ -255,7 +294,50 @@
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Sessão.Café · João Pessoa, PB · Projeto fictício: endereço, contatos e cupom são apenas ilustrativos<br>Fotos: <a href="https://unsplash.com/pt-br/fotografias/espaco-moderno-de-escritorio-com-mesas-e-cadeiras-HL54_oMwVGM" target="_blank" rel="noopener">Tim Schmidbauer</a>, <a href="https://unsplash.com/photos/a-modern-cafe-interior-with-people-working-and-relaxing-DCorP3hIl3k" target="_blank" rel="noopener">Zoshua Colah</a> e <a href="https://unsplash.com/photos/MV5NQ8oV5LU" target="_blank" rel="noopener">Yuliia Huzenko</a> no Unsplash</div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Visite</h3>
+        <p id="status-aberto" class="status" aria-live="polite"></p>
+        <address><svg class="i"><use href="#i-pin"/></svg><span>Rua da Sessão, 100 · Castelo Branco, João Pessoa, PB<br>A poucos minutos a pé da UFPB</span></address>
+        <!-- Versão estática para quem está sem JS; o script reescreve a lista a partir de "horarios". -->
+        <ul class="hours" id="horarios-lista">
+          <li><svg class="i"><use href="#i-clock"/></svg><span>Seg–Sex · 7h–22h</span></li>
+          <li><svg class="i"><use href="#i-clock"/></svg><span>Sábado · 9h–20h</span></li>
+          <li><svg class="i"><use href="#i-clock"/></svg><span>Domingo · 13h–19h</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <ul class="social">
+          <li><a href="#visita" data-modal="whatsapp" aria-label="WhatsApp" title="WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg></a></li>
+          <li><a href="#visita" data-modal="instagram" aria-label="Instagram" title="Instagram"><svg class="i"><use href="#i-insta"/></svg></a></li>
+          <li><a href="mailto:contato@sessao.cafe" aria-label="E-mail: contato@sessao.cafe" title="contato@sessao.cafe"><svg class="i"><use href="#i-mail"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#espaco">O espaço</a></li>
+          <li><a href="#silencio">Andar silencioso</a></li>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#mesa">Escolha sua mesa</a></li>
+          <li><a href="#duvidas">Dúvidas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Para estudantes</h3>
+        <p><svg class="i"><use href="#i-percent"/></svg><span>10% de desconto com carteirinha de estudante e cupom <strong>UM_COOKIE</strong> na 1ª visita.</span></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <a class="logo" href="#">Sessão<span>.</span>Café</a>
+      <span>© 2026 Sessão.Café</span>
+      <p class="slogan">Onde suas sessões rendem.</p>
+      <small>Projeto fictício: endereço, contatos e cupom são ilustrativos. Fotos: <a href="https://unsplash.com/pt-br/fotografias/espaco-moderno-de-escritorio-com-mesas-e-cadeiras-HL54_oMwVGM" target="_blank" rel="noopener">Tim Schmidbauer</a>, <a href="https://unsplash.com/photos/a-modern-cafe-interior-with-people-working-and-relaxing-DCorP3hIl3k" target="_blank" rel="noopener">Zoshua Colah</a> e <a href="https://unsplash.com/photos/MV5NQ8oV5LU" target="_blank" rel="noopener">Yuliia Huzenko</a> no Unsplash</small>
+    </div>
+  </div>
 </footer>
 
 <div class="sticky-cta" id="sticky" aria-hidden="true">
@@ -294,6 +376,46 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
+
+  // Horários de funcionamento (única fonte): dia da semana (0 = domingo) → [abre, fecha]
+  // O JSON-LD no <head> repete esses horários e precisa bater com este objeto.
+  var horarios = { 0: [13, 19], 1: [7, 22], 2: [7, 22], 3: [7, 22], 4: [7, 22], 5: [7, 22], 6: [9, 20] };
+  var diasLongos = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+  var diasCurtos = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+  // Lista do rodapé: agrupa dias seguidos com o mesmo horário (semana começa na segunda)
+  function renderHorarios() {
+    var ordem = [1, 2, 3, 4, 5, 6, 0], grupos = [], i, d, g;
+    for (i = 0; i < ordem.length; i++) {
+      d = ordem[i];
+      g = grupos[grupos.length - 1];
+      if (g && g.h[0] === horarios[d][0] && g.h[1] === horarios[d][1]) g.fim = d;
+      else grupos.push({ ini: d, fim: d, h: horarios[d] });
+    }
+    document.getElementById('horarios-lista').innerHTML = grupos.map(function (x) {
+      var nome = x.ini === x.fim ? diasLongos[x.ini] : diasCurtos[x.ini] + '–' + diasCurtos[x.fim];
+      return '<li><svg class="i"><use href="#i-clock"/></svg><span>' + nome + ' · ' + x.h[0] + 'h–' + x.h[1] + 'h</span></li>';
+    }).join('');
+  }
+
+  // Status "Aberto agora": recebe uma Date para poder ser testado com outros horários
+  function statusAberto(agora) {
+    var d = agora.getDay(), h = agora.getHours() + agora.getMinutes() / 60, hoje = horarios[d], i, n;
+    if (h >= hoje[0] && h < hoje[1]) return { aberto: true, texto: 'Aberto agora · fecha às ' + hoje[1] + 'h' };
+    if (h < hoje[0]) return { aberto: false, texto: 'Fechado · abre hoje às ' + hoje[0] + 'h' };
+    for (i = 1; i <= 7; i++) {
+      n = (d + i) % 7;
+      if (horarios[n]) return { aberto: false, texto: 'Fechado · abre ' + (i === 1 ? 'amanhã' : diasLongos[n]) + ' às ' + horarios[n][0] + 'h' };
+    }
+  }
+  function atualizarStatus() {
+    var s = statusAberto(new Date()), el = document.getElementById('status-aberto');
+    el.textContent = s.texto;
+    el.classList.toggle('aberto', s.aberto);
+  }
+  renderHorarios();
+  atualizarStatus();
+  setInterval(atualizarStatus, 60000);
 
   // Revelar elementos ao rolar
   if ('IntersectionObserver' in window) {
